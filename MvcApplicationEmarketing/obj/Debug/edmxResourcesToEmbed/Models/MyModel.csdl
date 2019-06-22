@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbeadmeenModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="dbeadmeenEntities1" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="tbl_admin" EntityType="dbeadmeenModel.tbl_admin" />
+    <EntitySet Name="tbl_category" EntityType="dbeadmeenModel.tbl_category" />
+    <EntitySet Name="tbl_product" EntityType="dbeadmeenModel.tbl_product" />
+    <EntitySet Name="tbl_user" EntityType="dbeadmeenModel.tbl_user" />
+    <AssociationSet Name="FK__tbl_categ__cat_f__0BC6C43E" Association="dbeadmeenModel.FK__tbl_categ__cat_f__0BC6C43E">
+      <End Role="tbl_admin" EntitySet="tbl_admin" />
+      <End Role="tbl_category" EntitySet="tbl_category" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_produ__pro_f__1B0907CE" Association="dbeadmeenModel.FK__tbl_produ__pro_f__1B0907CE">
+      <End Role="tbl_category" EntitySet="tbl_category" />
+      <End Role="tbl_product" EntitySet="tbl_product" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_produ__pro_f__1A14E395" Association="dbeadmeenModel.FK__tbl_produ__pro_f__1A14E395">
+      <End Role="tbl_user" EntitySet="tbl_user" />
+      <End Role="tbl_product" EntitySet="tbl_product" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="tbl_admin">
+    <Key>
+      <PropertyRef Name="ad_id" />
+    </Key>
+    <Property Name="ad_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ad_UserName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="ad_password" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="tbl_category" Relationship="dbeadmeenModel.FK__tbl_categ__cat_f__0BC6C43E" FromRole="tbl_admin" ToRole="tbl_category" />
+  </EntityType>
+  <EntityType Name="tbl_category">
+    <Key>
+      <PropertyRef Name="cat_id" />
+    </Key>
+    <Property Name="cat_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="cat_Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="cat_image" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="cat_fk_ad" Type="Int32" />
+    <Property Name="cat_status" Type="Int32" />
+    <NavigationProperty Name="tbl_admin" Relationship="dbeadmeenModel.FK__tbl_categ__cat_f__0BC6C43E" FromRole="tbl_category" ToRole="tbl_admin" />
+    <NavigationProperty Name="tbl_product" Relationship="dbeadmeenModel.FK__tbl_produ__pro_f__1B0907CE" FromRole="tbl_category" ToRole="tbl_product" />
+  </EntityType>
+  <EntityType Name="tbl_product">
+    <Key>
+      <PropertyRef Name="Pro_id" />
+    </Key>
+    <Property Name="Pro_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Pro_Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Pro_image" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="pro_price" Type="Int32" />
+    <Property Name="pro_descreption" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="pro_fk_user" Type="Int32" />
+    <Property Name="pro_fk_cat" Type="Int32" />
+    <NavigationProperty Name="tbl_category" Relationship="dbeadmeenModel.FK__tbl_produ__pro_f__1B0907CE" FromRole="tbl_product" ToRole="tbl_category" />
+    <NavigationProperty Name="tbl_user" Relationship="dbeadmeenModel.FK__tbl_produ__pro_f__1A14E395" FromRole="tbl_product" ToRole="tbl_user" />
+  </EntityType>
+  <EntityType Name="tbl_user">
+    <Key>
+      <PropertyRef Name="U_id" />
+    </Key>
+    <Property Name="U_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="U_Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="U_EMAIL" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="U_password" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="U_image" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="U_Contact" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="tbl_product" Relationship="dbeadmeenModel.FK__tbl_produ__pro_f__1A14E395" FromRole="tbl_user" ToRole="tbl_product" />
+  </EntityType>
+  <Association Name="FK__tbl_categ__cat_f__0BC6C43E">
+    <End Role="tbl_admin" Type="dbeadmeenModel.tbl_admin" Multiplicity="0..1" />
+    <End Role="tbl_category" Type="dbeadmeenModel.tbl_category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_admin">
+        <PropertyRef Name="ad_id" />
+      </Principal>
+      <Dependent Role="tbl_category">
+        <PropertyRef Name="cat_fk_ad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_produ__pro_f__1B0907CE">
+    <End Role="tbl_category" Type="dbeadmeenModel.tbl_category" Multiplicity="0..1" />
+    <End Role="tbl_product" Type="dbeadmeenModel.tbl_product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_category">
+        <PropertyRef Name="cat_id" />
+      </Principal>
+      <Dependent Role="tbl_product">
+        <PropertyRef Name="pro_fk_cat" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_produ__pro_f__1A14E395">
+    <End Role="tbl_user" Type="dbeadmeenModel.tbl_user" Multiplicity="0..1" />
+    <End Role="tbl_product" Type="dbeadmeenModel.tbl_product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_user">
+        <PropertyRef Name="U_id" />
+      </Principal>
+      <Dependent Role="tbl_product">
+        <PropertyRef Name="pro_fk_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,124 @@
+﻿   @using PagedList.Mvc
+@model  PagedList.IPagedList<MvcApplicationEmarketing.Models.tbl_product>
+
+@{
+    ViewBag.Title = "Index";
+}
+<!Ductype html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+    <title>View  Category</title>
+    <link href="~/Content/paginition.css" rel="stylesheet" />
+        <link href="~/Content/css/bootstrap.css" rel="stylesheet" />
+  <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+        
+        <style>
+        .cimg {
+   -webkit-transform 5s;
+   transition:transform 5s;
+   
+}
+.mySlides {display:none;}
+.cimg:hover {
+   
+    -webkit-transform: rotatez(360deg);
+}
+  
+</style>
+    </head>
+    <body>
+         <div class="w3-content w3-section" style="max-width:500px">
+  <img class="mySlides" src="~/Content/upload/1378569238shoppingtools-buildandprice-Rio-SnowWhitePearl-RO_46J.jpg" style="width:100%" >
+  <img class="mySlides" src="~/Content/upload/10945175504-zs-home_appliances_111-ab.jpg"  style="width:100%">
+  <img class="mySlides" src="~/Content/upload/best.jpg" style="width:100%">
+</div>
+
+
+    <div  style="height:1150px; ">
+       
+ <div class="row">
+            <div class="col-lg-12" style="height:100px; border:1px solid solid; ">
+
+
+  <img src="~/Content/img/bg2.jpg" style="width:100%; height:100%" />
+               
+
+            </div>
+
+        </div>       
+<div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-4" >
+        @if (TempData["total"] == null)
+        {
+
+            <h3>
+                Total Bill: 0 Rs
+            </h3>
+        }
+        else
+        {
+                <h3> Total Bill: @TempData["total"] Rs</h3>
+
+                }
+
+</div>
+
+
+    <div class="col-lg-2 col-md-2 col-sm-2">
+        <h3 style="color:#808080; font-family:'Arial Rounded MT';text-align:center"> <span class="btn btn-info">@Html.ActionLink("Check Out", "checkout", "Home")</span></h3>
+    </div>
+
+
+
+
+    </div>
+
+<div class="row" style="margin-bottom:100px;">
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+            <div class="col-lg-4 col-md-4" style="height:200px;margin-top:100px">
+
+                <img class="img img-responsive cimg" src="@Url.Content(item.Pro_image)" style=" height:100%;width:100% ;border-radius:50px 50px 50px 50px" />
+                <h3 style="color:#808080; font-family:'Arial Rounded MT';text-align:center">@item.Pro_Name <small>@item.pro_price Rs</small></h3>
+                <h4 style="color:#808080; font-family:'Arial Rounded MT';text-align:center" > <span class="btn btn-danger">@Html.ActionLink("Add To Cart", "Adtocart", new { id = @item.Pro_id})</span></h4>
+
+            </div>
+
+        }
+    }
+     <div id="container" style="margin-left: 20px">
+        <p></p>
+        <p></p>
+        <div class="pagination" style="margin-left: 400px">
+            Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+            of @Model.PageCount   @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+        </div>
+    </div>
+    <footer class="container-fluid text-center">
+            <div class="col-lg-12" style="height:100px; border:1px solid solid; ">
+                                <img src="~/Content/deepu/14560020750060463280.png"  class="img img-responsive" style="width:200%; height:200%" />
+
+            </div>
+</footer>
+</div>
+  <script>
+var myIndex = 0;
+carousel();
+
+function carousel() {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  myIndex++;
+  if (myIndex > x.length) {myIndex = 1}    
+  x[myIndex-1].style.display = "block";  
+  setTimeout(carousel, 20000); // Change image every 2 seconds
+}
+</script>  
+    </body>
+</html>

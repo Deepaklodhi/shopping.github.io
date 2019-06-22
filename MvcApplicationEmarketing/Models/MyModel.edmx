@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="dbeadmeenModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="dbeadmeenModelStoreContainer">
+          <EntitySet Name="tbl_admin" EntityType="dbeadmeenModel.Store.tbl_admin" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tbl_category" EntityType="dbeadmeenModel.Store.tbl_category" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tbl_product" EntityType="dbeadmeenModel.Store.tbl_product" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tbl_user" EntityType="dbeadmeenModel.Store.tbl_user" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK__tbl_categ__cat_f__0BC6C43E" Association="dbeadmeenModel.Store.FK__tbl_categ__cat_f__0BC6C43E">
+            <End Role="tbl_admin" EntitySet="tbl_admin" />
+            <End Role="tbl_category" EntitySet="tbl_category" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_produ__pro_f__1A14E395" Association="dbeadmeenModel.Store.FK__tbl_produ__pro_f__1A14E395">
+            <End Role="tbl_user" EntitySet="tbl_user" />
+            <End Role="tbl_product" EntitySet="tbl_product" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_produ__pro_f__1B0907CE" Association="dbeadmeenModel.Store.FK__tbl_produ__pro_f__1B0907CE">
+            <End Role="tbl_category" EntitySet="tbl_category" />
+            <End Role="tbl_product" EntitySet="tbl_product" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tbl_admin">
+          <Key>
+            <PropertyRef Name="ad_id" />
+          </Key>
+          <Property Name="ad_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ad_UserName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ad_password" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_category">
+          <Key>
+            <PropertyRef Name="cat_id" />
+          </Key>
+          <Property Name="cat_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="cat_Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="cat_image" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="cat_fk_ad" Type="int" />
+          <Property Name="cat_status" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_product">
+          <Key>
+            <PropertyRef Name="Pro_id" />
+          </Key>
+          <Property Name="Pro_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Pro_Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Pro_image" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="pro_price" Type="int" />
+          <Property Name="pro_descreption" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="pro_fk_user" Type="int" />
+          <Property Name="pro_fk_cat" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_user">
+          <Key>
+            <PropertyRef Name="U_id" />
+          </Key>
+          <Property Name="U_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="U_Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="U_EMAIL" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="U_password" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="U_image" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="U_Contact" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__tbl_categ__cat_f__0BC6C43E">
+          <End Role="tbl_admin" Type="dbeadmeenModel.Store.tbl_admin" Multiplicity="0..1" />
+          <End Role="tbl_category" Type="dbeadmeenModel.Store.tbl_category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_admin">
+              <PropertyRef Name="ad_id" />
+            </Principal>
+            <Dependent Role="tbl_category">
+              <PropertyRef Name="cat_fk_ad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_produ__pro_f__1A14E395">
+          <End Role="tbl_user" Type="dbeadmeenModel.Store.tbl_user" Multiplicity="0..1" />
+          <End Role="tbl_product" Type="dbeadmeenModel.Store.tbl_product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_user">
+              <PropertyRef Name="U_id" />
+            </Principal>
+            <Dependent Role="tbl_product">
+              <PropertyRef Name="pro_fk_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_produ__pro_f__1B0907CE">
+          <End Role="tbl_category" Type="dbeadmeenModel.Store.tbl_category" Multiplicity="0..1" />
+          <End Role="tbl_product" Type="dbeadmeenModel.Store.tbl_product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_category">
+              <PropertyRef Name="cat_id" />
+            </Principal>
+            <Dependent Role="tbl_product">
+              <PropertyRef Name="pro_fk_cat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbeadmeenModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="dbeadmeenEntities1" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_admin" EntityType="dbeadmeenModel.tbl_admin" />
+          <EntitySet Name="tbl_category" EntityType="dbeadmeenModel.tbl_category" />
+          <EntitySet Name="tbl_product" EntityType="dbeadmeenModel.tbl_product" />
+          <EntitySet Name="tbl_user" EntityType="dbeadmeenModel.tbl_user" />
+          <AssociationSet Name="FK__tbl_categ__cat_f__0BC6C43E" Association="dbeadmeenModel.FK__tbl_categ__cat_f__0BC6C43E">
+            <End Role="tbl_admin" EntitySet="tbl_admin" />
+            <End Role="tbl_category" EntitySet="tbl_category" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_produ__pro_f__1B0907CE" Association="dbeadmeenModel.FK__tbl_produ__pro_f__1B0907CE">
+            <End Role="tbl_category" EntitySet="tbl_category" />
+            <End Role="tbl_product" EntitySet="tbl_product" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_produ__pro_f__1A14E395" Association="dbeadmeenModel.FK__tbl_produ__pro_f__1A14E395">
+            <End Role="tbl_user" EntitySet="tbl_user" />
+            <End Role="tbl_product" EntitySet="tbl_product" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tbl_admin">
+          <Key>
+            <PropertyRef Name="ad_id" />
+          </Key>
+          <Property Name="ad_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ad_UserName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ad_password" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="tbl_category" Relationship="dbeadmeenModel.FK__tbl_categ__cat_f__0BC6C43E" FromRole="tbl_admin" ToRole="tbl_category" />
+        </EntityType>
+        <EntityType Name="tbl_category">
+          <Key>
+            <PropertyRef Name="cat_id" />
+          </Key>
+          <Property Name="cat_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="cat_Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="cat_image" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="cat_fk_ad" Type="Int32" />
+          <Property Name="cat_status" Type="Int32" />
+          <NavigationProperty Name="tbl_admin" Relationship="dbeadmeenModel.FK__tbl_categ__cat_f__0BC6C43E" FromRole="tbl_category" ToRole="tbl_admin" />
+          <NavigationProperty Name="tbl_product" Relationship="dbeadmeenModel.FK__tbl_produ__pro_f__1B0907CE" FromRole="tbl_category" ToRole="tbl_product" />
+        </EntityType>
+        <EntityType Name="tbl_product">
+          <Key>
+            <PropertyRef Name="Pro_id" />
+          </Key>
+          <Property Name="Pro_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Pro_Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Pro_image" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="pro_price" Type="Int32" />
+          <Property Name="pro_descreption" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="pro_fk_user" Type="Int32" />
+          <Property Name="pro_fk_cat" Type="Int32" />
+          <NavigationProperty Name="tbl_category" Relationship="dbeadmeenModel.FK__tbl_produ__pro_f__1B0907CE" FromRole="tbl_product" ToRole="tbl_category" />
+          <NavigationProperty Name="tbl_user" Relationship="dbeadmeenModel.FK__tbl_produ__pro_f__1A14E395" FromRole="tbl_product" ToRole="tbl_user" />
+        </EntityType>
+        <EntityType Name="tbl_user">
+          <Key>
+            <PropertyRef Name="U_id" />
+          </Key>
+          <Property Name="U_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="U_Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="U_EMAIL" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="U_password" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="U_image" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="U_Contact" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="tbl_product" Relationship="dbeadmeenModel.FK__tbl_produ__pro_f__1A14E395" FromRole="tbl_user" ToRole="tbl_product" />
+        </EntityType>
+        <Association Name="FK__tbl_categ__cat_f__0BC6C43E">
+          <End Role="tbl_admin" Type="dbeadmeenModel.tbl_admin" Multiplicity="0..1" />
+          <End Role="tbl_category" Type="dbeadmeenModel.tbl_category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_admin">
+              <PropertyRef Name="ad_id" />
+            </Principal>
+            <Dependent Role="tbl_category">
+              <PropertyRef Name="cat_fk_ad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_produ__pro_f__1B0907CE">
+          <End Role="tbl_category" Type="dbeadmeenModel.tbl_category" Multiplicity="0..1" />
+          <End Role="tbl_product" Type="dbeadmeenModel.tbl_product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_category">
+              <PropertyRef Name="cat_id" />
+            </Principal>
+            <Dependent Role="tbl_product">
+              <PropertyRef Name="pro_fk_cat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_produ__pro_f__1A14E395">
+          <End Role="tbl_user" Type="dbeadmeenModel.tbl_user" Multiplicity="0..1" />
+          <End Role="tbl_product" Type="dbeadmeenModel.tbl_product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_user">
+              <PropertyRef Name="U_id" />
+            </Principal>
+            <Dependent Role="tbl_product">
+              <PropertyRef Name="pro_fk_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbeadmeenModelStoreContainer" CdmEntityContainer="dbeadmeenEntities1">
+          <EntitySetMapping Name="tbl_admin">
+            <EntityTypeMapping TypeName="dbeadmeenModel.tbl_admin">
+              <MappingFragment StoreEntitySet="tbl_admin">
+                <ScalarProperty Name="ad_id" ColumnName="ad_id" />
+                <ScalarProperty Name="ad_UserName" ColumnName="ad_UserName" />
+                <ScalarProperty Name="ad_password" ColumnName="ad_password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_category">
+            <EntityTypeMapping TypeName="dbeadmeenModel.tbl_category">
+              <MappingFragment StoreEntitySet="tbl_category">
+                <ScalarProperty Name="cat_id" ColumnName="cat_id" />
+                <ScalarProperty Name="cat_Name" ColumnName="cat_Name" />
+                <ScalarProperty Name="cat_image" ColumnName="cat_image" />
+                <ScalarProperty Name="cat_fk_ad" ColumnName="cat_fk_ad" />
+                <ScalarProperty Name="cat_status" ColumnName="cat_status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_product">
+            <EntityTypeMapping TypeName="dbeadmeenModel.tbl_product">
+              <MappingFragment StoreEntitySet="tbl_product">
+                <ScalarProperty Name="Pro_id" ColumnName="Pro_id" />
+                <ScalarProperty Name="Pro_Name" ColumnName="Pro_Name" />
+                <ScalarProperty Name="Pro_image" ColumnName="Pro_image" />
+                <ScalarProperty Name="pro_price" ColumnName="pro_price" />
+                <ScalarProperty Name="pro_descreption" ColumnName="pro_descreption" />
+                <ScalarProperty Name="pro_fk_user" ColumnName="pro_fk_user" />
+                <ScalarProperty Name="pro_fk_cat" ColumnName="pro_fk_cat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_user">
+            <EntityTypeMapping TypeName="dbeadmeenModel.tbl_user">
+              <MappingFragment StoreEntitySet="tbl_user">
+                <ScalarProperty Name="U_id" ColumnName="U_id" />
+                <ScalarProperty Name="U_Name" ColumnName="U_Name" />
+                <ScalarProperty Name="U_EMAIL" ColumnName="U_EMAIL" />
+                <ScalarProperty Name="U_password" ColumnName="U_password" />
+                <ScalarProperty Name="U_image" ColumnName="U_image" />
+                <ScalarProperty Name="U_Contact" ColumnName="U_Contact" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

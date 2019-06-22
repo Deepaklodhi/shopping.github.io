@@ -1,0 +1,524 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="dbeadmeenModel2.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="dbeadmeenModel2StoreContainer">
+          <EntitySet Name="tbl_admin" EntityType="dbeadmeenModel2.Store.tbl_admin" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tbl_category" EntityType="dbeadmeenModel2.Store.tbl_category" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tbl_invoice12" EntityType="dbeadmeenModel2.Store.tbl_invoice12" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tbl_order12" EntityType="dbeadmeenModel2.Store.tbl_order12" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tbl_product" EntityType="dbeadmeenModel2.Store.tbl_product" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tbl_purchase" EntityType="dbeadmeenModel2.Store.tbl_purchase" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tbl_useer" EntityType="dbeadmeenModel2.Store.tbl_useer" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tbl_user" EntityType="dbeadmeenModel2.Store.tbl_user" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK__tbl_categ__cat_f__0BC6C43E" Association="dbeadmeenModel2.Store.FK__tbl_categ__cat_f__0BC6C43E">
+            <End Role="tbl_admin" EntitySet="tbl_admin" />
+            <End Role="tbl_category" EntitySet="tbl_category" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_invoi__in_fk__6FE99F9F" Association="dbeadmeenModel2.Store.FK__tbl_invoi__in_fk__6FE99F9F">
+            <End Role="tbl_useer" EntitySet="tbl_useer" />
+            <End Role="tbl_invoice12" EntitySet="tbl_invoice12" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_order__o_fk___75A278F5" Association="dbeadmeenModel2.Store.FK__tbl_order__o_fk___75A278F5">
+            <End Role="tbl_product" EntitySet="tbl_product" />
+            <End Role="tbl_order12" EntitySet="tbl_order12" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_order__o_fk___76969D2E" Association="dbeadmeenModel2.Store.FK__tbl_order__o_fk___76969D2E">
+            <End Role="tbl_invoice12" EntitySet="tbl_invoice12" />
+            <End Role="tbl_order12" EntitySet="tbl_order12" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_produ__pro_f__1A14E395" Association="dbeadmeenModel2.Store.FK__tbl_produ__pro_f__1A14E395">
+            <End Role="tbl_user" EntitySet="tbl_user" />
+            <End Role="tbl_product" EntitySet="tbl_product" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_produ__pro_f__1B0907CE" Association="dbeadmeenModel2.Store.FK__tbl_produ__pro_f__1B0907CE">
+            <End Role="tbl_category" EntitySet="tbl_category" />
+            <End Role="tbl_product" EntitySet="tbl_product" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tbl_admin">
+          <Key>
+            <PropertyRef Name="ad_id" />
+          </Key>
+          <Property Name="ad_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ad_UserName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ad_password" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_category">
+          <Key>
+            <PropertyRef Name="cat_id" />
+          </Key>
+          <Property Name="cat_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="cat_Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="cat_image" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="cat_fk_ad" Type="int" />
+          <Property Name="cat_status" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_invoice12">
+          <Key>
+            <PropertyRef Name="in_id" />
+          </Key>
+          <Property Name="in_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="in_date" Type="datetime" />
+          <Property Name="in_totalbill" Type="float" />
+          <Property Name="in_fk_useer" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_order12">
+          <Key>
+            <PropertyRef Name="o_id" />
+          </Key>
+          <Property Name="o_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="o_date" Type="datetime" />
+          <Property Name="o_qty" Type="int" />
+          <Property Name="o_bill" Type="float" />
+          <Property Name="o_unitprice" Type="int" />
+          <Property Name="o_fk_pro" Type="int" />
+          <Property Name="o_fk_invoice" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_product">
+          <Key>
+            <PropertyRef Name="Pro_id" />
+          </Key>
+          <Property Name="Pro_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Pro_Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Pro_image" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="pro_price" Type="int" />
+          <Property Name="pro_descreption" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="pro_fk_user" Type="int" />
+          <Property Name="pro_fk_cat" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_purchase">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Address1" Type="varchar" MaxLength="50" />
+          <Property Name="Address2" Type="varchar" MaxLength="50" />
+          <Property Name="phone" Type="varchar" MaxLength="20" />
+          <Property Name="city" Type="varchar" MaxLength="50" />
+          <Property Name="country" Type="varchar" MaxLength="50" />
+          <Property Name="zIPCODE" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_useer">
+          <Key>
+            <PropertyRef Name="U1_id" />
+          </Key>
+          <Property Name="U1_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="U1_Name" Type="varchar" MaxLength="50" />
+          <Property Name="U1_Contact" Type="varchar" MaxLength="50" />
+          <Property Name="U1_paswword" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_user">
+          <Key>
+            <PropertyRef Name="U_id" />
+          </Key>
+          <Property Name="U_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="U_Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="U_EMAIL" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="U_password" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="U_image" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="U_Contact" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__tbl_categ__cat_f__0BC6C43E">
+          <End Role="tbl_admin" Type="dbeadmeenModel2.Store.tbl_admin" Multiplicity="0..1" />
+          <End Role="tbl_category" Type="dbeadmeenModel2.Store.tbl_category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_admin">
+              <PropertyRef Name="ad_id" />
+            </Principal>
+            <Dependent Role="tbl_category">
+              <PropertyRef Name="cat_fk_ad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_invoi__in_fk__6FE99F9F">
+          <End Role="tbl_useer" Type="dbeadmeenModel2.Store.tbl_useer" Multiplicity="0..1" />
+          <End Role="tbl_invoice12" Type="dbeadmeenModel2.Store.tbl_invoice12" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_useer">
+              <PropertyRef Name="U1_id" />
+            </Principal>
+            <Dependent Role="tbl_invoice12">
+              <PropertyRef Name="in_fk_useer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_order__o_fk___75A278F5">
+          <End Role="tbl_product" Type="dbeadmeenModel2.Store.tbl_product" Multiplicity="0..1" />
+          <End Role="tbl_order12" Type="dbeadmeenModel2.Store.tbl_order12" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_product">
+              <PropertyRef Name="Pro_id" />
+            </Principal>
+            <Dependent Role="tbl_order12">
+              <PropertyRef Name="o_fk_pro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_order__o_fk___76969D2E">
+          <End Role="tbl_invoice12" Type="dbeadmeenModel2.Store.tbl_invoice12" Multiplicity="0..1" />
+          <End Role="tbl_order12" Type="dbeadmeenModel2.Store.tbl_order12" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_invoice12">
+              <PropertyRef Name="in_id" />
+            </Principal>
+            <Dependent Role="tbl_order12">
+              <PropertyRef Name="o_fk_invoice" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_produ__pro_f__1A14E395">
+          <End Role="tbl_user" Type="dbeadmeenModel2.Store.tbl_user" Multiplicity="0..1" />
+          <End Role="tbl_product" Type="dbeadmeenModel2.Store.tbl_product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_user">
+              <PropertyRef Name="U_id" />
+            </Principal>
+            <Dependent Role="tbl_product">
+              <PropertyRef Name="pro_fk_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_produ__pro_f__1B0907CE">
+          <End Role="tbl_category" Type="dbeadmeenModel2.Store.tbl_category" Multiplicity="0..1" />
+          <End Role="tbl_product" Type="dbeadmeenModel2.Store.tbl_product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_category">
+              <PropertyRef Name="cat_id" />
+            </Principal>
+            <Dependent Role="tbl_product">
+              <PropertyRef Name="pro_fk_cat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbeadmeenModel2" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="dbeadmeenEntities4" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_admin" EntityType="dbeadmeenModel2.tbl_admin" />
+          <EntitySet Name="tbl_category" EntityType="dbeadmeenModel2.tbl_category" />
+          <EntitySet Name="tbl_invoice12" EntityType="dbeadmeenModel2.tbl_invoice12" />
+          <EntitySet Name="tbl_order12" EntityType="dbeadmeenModel2.tbl_order12" />
+          <EntitySet Name="tbl_product" EntityType="dbeadmeenModel2.tbl_product" />
+          <EntitySet Name="tbl_useer" EntityType="dbeadmeenModel2.tbl_useer" />
+          <EntitySet Name="tbl_user" EntityType="dbeadmeenModel2.tbl_user" />
+          <AssociationSet Name="FK__tbl_categ__cat_f__0BC6C43E" Association="dbeadmeenModel2.FK__tbl_categ__cat_f__0BC6C43E">
+            <End Role="tbl_admin" EntitySet="tbl_admin" />
+            <End Role="tbl_category" EntitySet="tbl_category" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_produ__pro_f__1B0907CE" Association="dbeadmeenModel2.FK__tbl_produ__pro_f__1B0907CE">
+            <End Role="tbl_category" EntitySet="tbl_category" />
+            <End Role="tbl_product" EntitySet="tbl_product" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_invoi__in_fk__6FE99F9F" Association="dbeadmeenModel2.FK__tbl_invoi__in_fk__6FE99F9F">
+            <End Role="tbl_useer" EntitySet="tbl_useer" />
+            <End Role="tbl_invoice12" EntitySet="tbl_invoice12" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_order__o_fk___76969D2E" Association="dbeadmeenModel2.FK__tbl_order__o_fk___76969D2E">
+            <End Role="tbl_invoice12" EntitySet="tbl_invoice12" />
+            <End Role="tbl_order12" EntitySet="tbl_order12" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_order__o_fk___75A278F5" Association="dbeadmeenModel2.FK__tbl_order__o_fk___75A278F5">
+            <End Role="tbl_product" EntitySet="tbl_product" />
+            <End Role="tbl_order12" EntitySet="tbl_order12" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_produ__pro_f__1A14E395" Association="dbeadmeenModel2.FK__tbl_produ__pro_f__1A14E395">
+            <End Role="tbl_user" EntitySet="tbl_user" />
+            <End Role="tbl_product" EntitySet="tbl_product" />
+          </AssociationSet>
+          <EntitySet Name="tbl_purchase" EntityType="dbeadmeenModel2.tbl_purchase" />
+        </EntityContainer>
+        <EntityType Name="tbl_admin">
+          <Key>
+            <PropertyRef Name="ad_id" />
+          </Key>
+          <Property Name="ad_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ad_UserName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ad_password" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="tbl_category" Relationship="dbeadmeenModel2.FK__tbl_categ__cat_f__0BC6C43E" FromRole="tbl_admin" ToRole="tbl_category" />
+        </EntityType>
+        <EntityType Name="tbl_category">
+          <Key>
+            <PropertyRef Name="cat_id" />
+          </Key>
+          <Property Name="cat_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="cat_Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="cat_image" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="cat_fk_ad" Type="Int32" />
+          <Property Name="cat_status" Type="Int32" />
+          <NavigationProperty Name="tbl_admin" Relationship="dbeadmeenModel2.FK__tbl_categ__cat_f__0BC6C43E" FromRole="tbl_category" ToRole="tbl_admin" />
+          <NavigationProperty Name="tbl_product" Relationship="dbeadmeenModel2.FK__tbl_produ__pro_f__1B0907CE" FromRole="tbl_category" ToRole="tbl_product" />
+        </EntityType>
+        <EntityType Name="tbl_invoice12">
+          <Key>
+            <PropertyRef Name="in_id" />
+          </Key>
+          <Property Name="in_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="in_date" Type="DateTime" Precision="3" />
+          <Property Name="in_totalbill" Type="Double" />
+          <Property Name="in_fk_useer" Type="Int32" />
+          <NavigationProperty Name="tbl_useer" Relationship="dbeadmeenModel2.FK__tbl_invoi__in_fk__6FE99F9F" FromRole="tbl_invoice12" ToRole="tbl_useer" />
+          <NavigationProperty Name="tbl_order12" Relationship="dbeadmeenModel2.FK__tbl_order__o_fk___76969D2E" FromRole="tbl_invoice12" ToRole="tbl_order12" />
+        </EntityType>
+        <EntityType Name="tbl_order12">
+          <Key>
+            <PropertyRef Name="o_id" />
+          </Key>
+          <Property Name="o_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="o_date" Type="DateTime" Precision="3" />
+          <Property Name="o_qty" Type="Int32" />
+          <Property Name="o_bill" Type="Double" />
+          <Property Name="o_unitprice" Type="Int32" />
+          <Property Name="o_fk_pro" Type="Int32" />
+          <Property Name="o_fk_invoice" Type="Int32" />
+          <NavigationProperty Name="tbl_invoice12" Relationship="dbeadmeenModel2.FK__tbl_order__o_fk___76969D2E" FromRole="tbl_order12" ToRole="tbl_invoice12" />
+          <NavigationProperty Name="tbl_product" Relationship="dbeadmeenModel2.FK__tbl_order__o_fk___75A278F5" FromRole="tbl_order12" ToRole="tbl_product" />
+        </EntityType>
+        <EntityType Name="tbl_product">
+          <Key>
+            <PropertyRef Name="Pro_id" />
+          </Key>
+          <Property Name="Pro_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Pro_Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Pro_image" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="pro_price" Type="Int32" />
+          <Property Name="pro_descreption" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="pro_fk_user" Type="Int32" />
+          <Property Name="pro_fk_cat" Type="Int32" />
+          <NavigationProperty Name="tbl_category" Relationship="dbeadmeenModel2.FK__tbl_produ__pro_f__1B0907CE" FromRole="tbl_product" ToRole="tbl_category" />
+          <NavigationProperty Name="tbl_order12" Relationship="dbeadmeenModel2.FK__tbl_order__o_fk___75A278F5" FromRole="tbl_product" ToRole="tbl_order12" />
+          <NavigationProperty Name="tbl_user" Relationship="dbeadmeenModel2.FK__tbl_produ__pro_f__1A14E395" FromRole="tbl_product" ToRole="tbl_user" />
+        </EntityType>
+        <EntityType Name="tbl_useer">
+          <Key>
+            <PropertyRef Name="U1_id" />
+          </Key>
+          <Property Name="U1_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="U1_Name" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="U1_Contact" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="U1_paswword" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="tbl_invoice12" Relationship="dbeadmeenModel2.FK__tbl_invoi__in_fk__6FE99F9F" FromRole="tbl_useer" ToRole="tbl_invoice12" />
+        </EntityType>
+        <EntityType Name="tbl_user">
+          <Key>
+            <PropertyRef Name="U_id" />
+          </Key>
+          <Property Name="U_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="U_Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="U_EMAIL" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="U_password" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="U_image" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="U_Contact" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="tbl_product" Relationship="dbeadmeenModel2.FK__tbl_produ__pro_f__1A14E395" FromRole="tbl_user" ToRole="tbl_product" />
+        </EntityType>
+        <Association Name="FK__tbl_categ__cat_f__0BC6C43E">
+          <End Role="tbl_admin" Type="dbeadmeenModel2.tbl_admin" Multiplicity="0..1" />
+          <End Role="tbl_category" Type="dbeadmeenModel2.tbl_category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_admin">
+              <PropertyRef Name="ad_id" />
+            </Principal>
+            <Dependent Role="tbl_category">
+              <PropertyRef Name="cat_fk_ad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_produ__pro_f__1B0907CE">
+          <End Role="tbl_category" Type="dbeadmeenModel2.tbl_category" Multiplicity="0..1" />
+          <End Role="tbl_product" Type="dbeadmeenModel2.tbl_product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_category">
+              <PropertyRef Name="cat_id" />
+            </Principal>
+            <Dependent Role="tbl_product">
+              <PropertyRef Name="pro_fk_cat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_invoi__in_fk__6FE99F9F">
+          <End Role="tbl_useer" Type="dbeadmeenModel2.tbl_useer" Multiplicity="0..1" />
+          <End Role="tbl_invoice12" Type="dbeadmeenModel2.tbl_invoice12" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_useer">
+              <PropertyRef Name="U1_id" />
+            </Principal>
+            <Dependent Role="tbl_invoice12">
+              <PropertyRef Name="in_fk_useer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_order__o_fk___76969D2E">
+          <End Role="tbl_invoice12" Type="dbeadmeenModel2.tbl_invoice12" Multiplicity="0..1" />
+          <End Role="tbl_order12" Type="dbeadmeenModel2.tbl_order12" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_invoice12">
+              <PropertyRef Name="in_id" />
+            </Principal>
+            <Dependent Role="tbl_order12">
+              <PropertyRef Name="o_fk_invoice" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_order__o_fk___75A278F5">
+          <End Role="tbl_product" Type="dbeadmeenModel2.tbl_product" Multiplicity="0..1" />
+          <End Role="tbl_order12" Type="dbeadmeenModel2.tbl_order12" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_product">
+              <PropertyRef Name="Pro_id" />
+            </Principal>
+            <Dependent Role="tbl_order12">
+              <PropertyRef Name="o_fk_pro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_produ__pro_f__1A14E395">
+          <End Role="tbl_user" Type="dbeadmeenModel2.tbl_user" Multiplicity="0..1" />
+          <End Role="tbl_product" Type="dbeadmeenModel2.tbl_product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_user">
+              <PropertyRef Name="U_id" />
+            </Principal>
+            <Dependent Role="tbl_product">
+              <PropertyRef Name="pro_fk_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tbl_purchase">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Address1" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Address2" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="phone" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="city" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="country" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="zIPCODE" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbeadmeenModel2StoreContainer" CdmEntityContainer="dbeadmeenEntities4">
+          <EntitySetMapping Name="tbl_admin">
+            <EntityTypeMapping TypeName="dbeadmeenModel2.tbl_admin">
+              <MappingFragment StoreEntitySet="tbl_admin">
+                <ScalarProperty Name="ad_id" ColumnName="ad_id" />
+                <ScalarProperty Name="ad_UserName" ColumnName="ad_UserName" />
+                <ScalarProperty Name="ad_password" ColumnName="ad_password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_category">
+            <EntityTypeMapping TypeName="dbeadmeenModel2.tbl_category">
+              <MappingFragment StoreEntitySet="tbl_category">
+                <ScalarProperty Name="cat_id" ColumnName="cat_id" />
+                <ScalarProperty Name="cat_Name" ColumnName="cat_Name" />
+                <ScalarProperty Name="cat_image" ColumnName="cat_image" />
+                <ScalarProperty Name="cat_fk_ad" ColumnName="cat_fk_ad" />
+                <ScalarProperty Name="cat_status" ColumnName="cat_status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_invoice12">
+            <EntityTypeMapping TypeName="dbeadmeenModel2.tbl_invoice12">
+              <MappingFragment StoreEntitySet="tbl_invoice12">
+                <ScalarProperty Name="in_id" ColumnName="in_id" />
+                <ScalarProperty Name="in_date" ColumnName="in_date" />
+                <ScalarProperty Name="in_totalbill" ColumnName="in_totalbill" />
+                <ScalarProperty Name="in_fk_useer" ColumnName="in_fk_useer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_order12">
+            <EntityTypeMapping TypeName="dbeadmeenModel2.tbl_order12">
+              <MappingFragment StoreEntitySet="tbl_order12">
+                <ScalarProperty Name="o_id" ColumnName="o_id" />
+                <ScalarProperty Name="o_date" ColumnName="o_date" />
+                <ScalarProperty Name="o_qty" ColumnName="o_qty" />
+                <ScalarProperty Name="o_bill" ColumnName="o_bill" />
+                <ScalarProperty Name="o_unitprice" ColumnName="o_unitprice" />
+                <ScalarProperty Name="o_fk_pro" ColumnName="o_fk_pro" />
+                <ScalarProperty Name="o_fk_invoice" ColumnName="o_fk_invoice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_product">
+            <EntityTypeMapping TypeName="dbeadmeenModel2.tbl_product">
+              <MappingFragment StoreEntitySet="tbl_product">
+                <ScalarProperty Name="Pro_id" ColumnName="Pro_id" />
+                <ScalarProperty Name="Pro_Name" ColumnName="Pro_Name" />
+                <ScalarProperty Name="Pro_image" ColumnName="Pro_image" />
+                <ScalarProperty Name="pro_price" ColumnName="pro_price" />
+                <ScalarProperty Name="pro_descreption" ColumnName="pro_descreption" />
+                <ScalarProperty Name="pro_fk_user" ColumnName="pro_fk_user" />
+                <ScalarProperty Name="pro_fk_cat" ColumnName="pro_fk_cat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_useer">
+            <EntityTypeMapping TypeName="dbeadmeenModel2.tbl_useer">
+              <MappingFragment StoreEntitySet="tbl_useer">
+                <ScalarProperty Name="U1_id" ColumnName="U1_id" />
+                <ScalarProperty Name="U1_Name" ColumnName="U1_Name" />
+                <ScalarProperty Name="U1_Contact" ColumnName="U1_Contact" />
+                <ScalarProperty Name="U1_paswword" ColumnName="U1_paswword" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_user">
+            <EntityTypeMapping TypeName="dbeadmeenModel2.tbl_user">
+              <MappingFragment StoreEntitySet="tbl_user">
+                <ScalarProperty Name="U_id" ColumnName="U_id" />
+                <ScalarProperty Name="U_Name" ColumnName="U_Name" />
+                <ScalarProperty Name="U_EMAIL" ColumnName="U_EMAIL" />
+                <ScalarProperty Name="U_password" ColumnName="U_password" />
+                <ScalarProperty Name="U_image" ColumnName="U_image" />
+                <ScalarProperty Name="U_Contact" ColumnName="U_Contact" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_purchase">
+            <EntityTypeMapping TypeName="dbeadmeenModel2.tbl_purchase">
+              <MappingFragment StoreEntitySet="tbl_purchase">
+                <ScalarProperty Name="zIPCODE" ColumnName="zIPCODE" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

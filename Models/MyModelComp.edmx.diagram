@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2238bcfd6b0d49a5b0990ec378dc534b" Name="Diagram1">
+        <EntityTypeShape EntityType="dbeadmeenModel2.tbl_admin" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbeadmeenModel2.tbl_category" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbeadmeenModel2.tbl_invoice12" Width="1.5" PointX="5.25" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbeadmeenModel2.tbl_order12" Width="1.5" PointX="7.5" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbeadmeenModel2.tbl_product" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbeadmeenModel2.tbl_useer" Width="1.5" PointX="3" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbeadmeenModel2.tbl_user" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <AssociationConnector Association="dbeadmeenModel2.FK__tbl_categ__cat_f__0BC6C43E" ManuallyRouted="false" />
+        <AssociationConnector Association="dbeadmeenModel2.FK__tbl_produ__pro_f__1B0907CE" ManuallyRouted="false" />
+        <AssociationConnector Association="dbeadmeenModel2.FK__tbl_invoi__in_fk__6FE99F9F" ManuallyRouted="false" />
+        <AssociationConnector Association="dbeadmeenModel2.FK__tbl_order__o_fk___76969D2E" ManuallyRouted="false" />
+        <AssociationConnector Association="dbeadmeenModel2.FK__tbl_order__o_fk___75A278F5" ManuallyRouted="false" />
+        <AssociationConnector Association="dbeadmeenModel2.FK__tbl_produ__pro_f__1A14E395" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="dbeadmeenModel2.tbl_purchase" Width="1.5" PointX="11.34259082718873" PointY="23.8664540461574" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

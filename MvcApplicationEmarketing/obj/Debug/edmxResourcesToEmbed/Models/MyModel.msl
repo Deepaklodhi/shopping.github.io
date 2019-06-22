@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dbeadmeenModelStoreContainer" CdmEntityContainer="dbeadmeenEntities1">
+    <EntitySetMapping Name="tbl_admin">
+      <EntityTypeMapping TypeName="dbeadmeenModel.tbl_admin">
+        <MappingFragment StoreEntitySet="tbl_admin">
+          <ScalarProperty Name="ad_id" ColumnName="ad_id" />
+          <ScalarProperty Name="ad_UserName" ColumnName="ad_UserName" />
+          <ScalarProperty Name="ad_password" ColumnName="ad_password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_category">
+      <EntityTypeMapping TypeName="dbeadmeenModel.tbl_category">
+        <MappingFragment StoreEntitySet="tbl_category">
+          <ScalarProperty Name="cat_id" ColumnName="cat_id" />
+          <ScalarProperty Name="cat_Name" ColumnName="cat_Name" />
+          <ScalarProperty Name="cat_image" ColumnName="cat_image" />
+          <ScalarProperty Name="cat_fk_ad" ColumnName="cat_fk_ad" />
+          <ScalarProperty Name="cat_status" ColumnName="cat_status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_product">
+      <EntityTypeMapping TypeName="dbeadmeenModel.tbl_product">
+        <MappingFragment StoreEntitySet="tbl_product">
+          <ScalarProperty Name="Pro_id" ColumnName="Pro_id" />
+          <ScalarProperty Name="Pro_Name" ColumnName="Pro_Name" />
+          <ScalarProperty Name="Pro_image" ColumnName="Pro_image" />
+          <ScalarProperty Name="pro_price" ColumnName="pro_price" />
+          <ScalarProperty Name="pro_descreption" ColumnName="pro_descreption" />
+          <ScalarProperty Name="pro_fk_user" ColumnName="pro_fk_user" />
+          <ScalarProperty Name="pro_fk_cat" ColumnName="pro_fk_cat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_user">
+      <EntityTypeMapping TypeName="dbeadmeenModel.tbl_user">
+        <MappingFragment StoreEntitySet="tbl_user">
+          <ScalarProperty Name="U_id" ColumnName="U_id" />
+          <ScalarProperty Name="U_Name" ColumnName="U_Name" />
+          <ScalarProperty Name="U_EMAIL" ColumnName="U_EMAIL" />
+          <ScalarProperty Name="U_password" ColumnName="U_password" />
+          <ScalarProperty Name="U_image" ColumnName="U_image" />
+          <ScalarProperty Name="U_Contact" ColumnName="U_Contact" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

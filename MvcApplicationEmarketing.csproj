@@ -1,0 +1,787 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{84EC9072-A37D-4F33-B362-02E0DE3B560A}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MvcApplicationEmarketing</RootNamespace>
+    <AssemblyName>MvcApplicationEmarketing</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.6\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20710.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.Data.2.0.20710.0\lib\net40\WebMatrix.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebPages.OAuth, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.OAuth.2.0.20710.0\lib\net40\Microsoft.Web.WebPages.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.WebData, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.WebData.2.0.20710.0\lib\net40\WebMatrix.WebData.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.AspNet, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.AspNet.4.0.3.12153\lib\net40-full\DotNetOpenAuth.AspNet.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.Core.4.0.3.12153\lib\net40-full\DotNetOpenAuth.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth.Consumer, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Consumer.4.0.3.12153\lib\net40-full\DotNetOpenAuth.OAuth.Consumer.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Core.4.0.3.12153\lib\net40-full\DotNetOpenAuth.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.Core.4.0.3.12153\lib\net40-full\DotNetOpenAuth.OpenId.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId.RelyingParty, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.RelyingParty.4.0.3.12153\lib\net40-full\DotNetOpenAuth.OpenId.RelyingParty.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.1.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.1.0\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\PurchaseController.cs" />
+    <Compile Include="Models\cart.cs" />
+    <Compile Include="Models\MyModelComp.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MyModelComp.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MyModelComp.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MyModelComp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MyModelComp.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MyModelComp.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\purchaseModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>purchaseModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\purchaseModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>purchaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\purchaseModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>purchaseModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_admin.cs">
+      <DependentUpon>MyModelComp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_category.cs">
+      <DependentUpon>MyModelComp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_invoice12.cs">
+      <DependentUpon>MyModelComp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_order12.cs">
+      <DependentUpon>MyModelComp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_product.cs">
+      <DependentUpon>MyModelComp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_purchase.cs">
+      <DependentUpon>purchaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_useer.cs">
+      <DependentUpon>MyModelComp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_user.cs">
+      <DependentUpon>MyModelComp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\App_Start\AuthConfig.cs" />
+    <Compile Include="Properties\App_Start\BundleConfig.cs" />
+    <Compile Include="Properties\App_Start\FilterConfig.cs" />
+    <Compile Include="Properties\App_Start\RouteConfig.cs" />
+    <Compile Include="Properties\App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Adviewmodel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\css\bootstrap-grid.css" />
+    <Content Include="Content\css\bootstrap-grid.min.css" />
+    <Content Include="Content\css\bootstrap-reboot.css" />
+    <Content Include="Content\css\bootstrap-reboot.min.css" />
+    <Content Include="Content\css\bootstrap.css" />
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\deepu\14560020750060463280.png" />
+    <Content Include="Content\deepu\150_sleep1_600.gif" />
+    <Content Include="Content\deepu\1StoreNew[1].jpg" />
+    <Content Include="Content\deepu\a70c8c5a62b615e675c1a814b8937fe5.jpg" />
+    <Content Include="Content\deepu\adlisting2.gif" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\deepu\BIZON FONT.jpg" />
+    <Content Include="Content\deepu\Bizon side.jpg" />
+    <Content Include="Content\deepu\Deepak.jpg" />
+    <Content Include="Content\deepu\Dipu.jpg" />
+    <Content Include="Content\deepu\eCommerce-marketing.png" />
+    <Content Include="Content\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\fott\js\blog_custom.js" />
+    <Content Include="Content\fott\js\blog_single_custom.js" />
+    <Content Include="Content\fott\js\cart_custom.js" />
+    <Content Include="Content\fott\js\contact_custom.js" />
+    <Content Include="Content\fott\js\custom.js" />
+    <Content Include="Content\fott\js\jquery-3.3.1.min.js" />
+    <Content Include="Content\fott\js\product_custom.js" />
+    <Content Include="Content\fott\js\regular_custom.js" />
+    <Content Include="Content\fott\js\shop_custom.js" />
+    <Content Include="Content\fott\plugins\easing\easing.js" />
+    <Content Include="Content\fott\plugins\fontawesome-free-5.0.1\css\fontawesome-all.css" />
+    <Content Include="Content\fott\plugins\fontawesome-free-5.0.1\webfonts\fa-brands-400.svg" />
+    <Content Include="Content\fott\plugins\fontawesome-free-5.0.1\webfonts\fa-regular-400.svg" />
+    <Content Include="Content\fott\plugins\fontawesome-free-5.0.1\webfonts\fa-solid-900.svg" />
+    <Content Include="Content\fott\plugins\greensock\animation.gsap.min.js" />
+    <Content Include="Content\fott\plugins\greensock\ScrollToPlugin.min.js" />
+    <Content Include="Content\fott\plugins\greensock\TimelineMax.min.js" />
+    <Content Include="Content\fott\plugins\greensock\TweenMax.min.js" />
+    <Content Include="Content\fott\plugins\Isotope\isotope.pkgd.min.js" />
+    <Content Include="Content\fott\plugins\jquery-ui-1.12.1.custom\jquery-ui.css" />
+    <Content Include="Content\fott\plugins\jquery-ui-1.12.1.custom\jquery-ui.js" />
+    <Content Include="Content\fott\plugins\OwlCarousel2-2.2.1\ajax-loader.gif" />
+    <Content Include="Content\fott\plugins\OwlCarousel2-2.2.1\animate.css" />
+    <Content Include="Content\fott\plugins\OwlCarousel2-2.2.1\owl.carousel.css" />
+    <Content Include="Content\fott\plugins\OwlCarousel2-2.2.1\owl.carousel.js" />
+    <Content Include="Content\fott\plugins\OwlCarousel2-2.2.1\owl.theme.default.css" />
+    <Content Include="Content\fott\plugins\OwlCarousel2-2.2.1\owl.video.play.png" />
+    <Content Include="Content\fott\plugins\parallax-js-master\parallax.min.js" />
+    <Content Include="Content\fott\plugins\scrollmagic\ScrollMagic.min.js" />
+    <Content Include="Content\fott\plugins\slick-1.8.0\ajax-loader.gif" />
+    <Content Include="Content\fott\plugins\slick-1.8.0\fonts\slick.svg" />
+    <Content Include="Content\fott\plugins\slick-1.8.0\index.html" />
+    <Content Include="Content\fott\plugins\slick-1.8.0\slick.css" />
+    <Content Include="Content\fott\plugins\slick-1.8.0\slick.js" />
+    <Content Include="Content\fott\styles\blog_responsive.css" />
+    <Content Include="Content\fott\styles\blog_single_responsive.css" />
+    <Content Include="Content\fott\styles\blog_single_styles.css" />
+    <Content Include="Content\fott\styles\blog_styles.css" />
+    <Content Include="Content\fott\styles\bootstrap4\bootstrap.min.css" />
+    <Content Include="Content\fott\styles\bootstrap4\bootstrap.min.js" />
+    <Content Include="Content\fott\styles\bootstrap4\popper.js" />
+    <Content Include="Content\fott\styles\cart_responsive.css" />
+    <Content Include="Content\fott\styles\cart_styles.css" />
+    <Content Include="Content\fott\styles\contact_responsive.css" />
+    <Content Include="Content\fott\styles\contact_styles.css" />
+    <Content Include="Content\fott\styles\main_styles.css" />
+    <Content Include="Content\fott\styles\product_responsive.css" />
+    <Content Include="Content\fott\styles\product_styles.css" />
+    <Content Include="Content\fott\styles\regular_responsive.css" />
+    <Content Include="Content\fott\styles\regular_styles.css" />
+    <Content Include="Content\fott\styles\responsive.css" />
+    <Content Include="Content\fott\styles\shop_responsive.css" />
+    <Content Include="Content\fott\styles\shop_styles.css" />
+    <Content Include="Content\Imagess\adv_1.png" />
+    <Content Include="Content\Imagess\adv_2.png" />
+    <Content Include="Content\Imagess\adv_3.png" />
+    <Content Include="Content\Imagess\banner_2_background.jpg" />
+    <Content Include="Content\Imagess\banner_2_product.png" />
+    <Content Include="Content\Imagess\banner_background.jpg" />
+    <Content Include="Content\Imagess\banner_product.png" />
+    <Content Include="Content\Imagess\best_1.png" />
+    <Content Include="Content\Imagess\best_2.png" />
+    <Content Include="Content\Imagess\best_3.png" />
+    <Content Include="Content\Imagess\best_4.png" />
+    <Content Include="Content\Imagess\best_5.png" />
+    <Content Include="Content\Imagess\best_6.png" />
+    <Content Include="Content\Imagess\blog_1.jpg" />
+    <Content Include="Content\Imagess\blog_2.jpg" />
+    <Content Include="Content\Imagess\blog_3.jpg" />
+    <Content Include="Content\Imagess\blog_4.jpg" />
+    <Content Include="Content\Imagess\blog_5.jpg" />
+    <Content Include="Content\Imagess\blog_6.jpg" />
+    <Content Include="Content\Imagess\blog_7.jpg" />
+    <Content Include="Content\Imagess\blog_8.jpg" />
+    <Content Include="Content\Imagess\blog_9.jpg" />
+    <Content Include="Content\Imagess\blog_single_background.jpg" />
+    <Content Include="Content\Imagess\brands_1.jpg" />
+    <Content Include="Content\Imagess\brands_2.jpg" />
+    <Content Include="Content\Imagess\brands_3.jpg" />
+    <Content Include="Content\Imagess\brands_4.jpg" />
+    <Content Include="Content\Imagess\brands_5.jpg" />
+    <Content Include="Content\Imagess\brands_6.jpg" />
+    <Content Include="Content\Imagess\brands_7.jpg" />
+    <Content Include="Content\Imagess\brands_8.jpg" />
+    <Content Include="Content\Imagess\cart.png" />
+    <Content Include="Content\Imagess\char_1.png" />
+    <Content Include="Content\Imagess\char_2.png" />
+    <Content Include="Content\Imagess\char_3.png" />
+    <Content Include="Content\Imagess\char_4.png" />
+    <Content Include="Content\Imagess\contact_1.png" />
+    <Content Include="Content\Imagess\contact_2.png" />
+    <Content Include="Content\Imagess\contact_3.png" />
+    <Content Include="Content\Imagess\deals.png" />
+    <Content Include="Content\Imagess\featured_1.png" />
+    <Content Include="Content\Imagess\featured_2.png" />
+    <Content Include="Content\Imagess\featured_3.png" />
+    <Content Include="Content\Imagess\featured_4.png" />
+    <Content Include="Content\Imagess\featured_5.png" />
+    <Content Include="Content\Imagess\featured_6.png" />
+    <Content Include="Content\Imagess\featured_7.png" />
+    <Content Include="Content\Imagess\featured_8.png" />
+    <Content Include="Content\Imagess\heart.png" />
+    <Content Include="Content\Imagess\logos_1.png" />
+    <Content Include="Content\Imagess\logos_2.png" />
+    <Content Include="Content\Imagess\logos_3.png" />
+    <Content Include="Content\Imagess\logos_4.png" />
+    <Content Include="Content\Imagess\mail.png" />
+    <Content Include="Content\Imagess\mail_white.png" />
+    <Content Include="Content\Imagess\marker.png" />
+    <Content Include="Content\Imagess\new_1.jpg" />
+    <Content Include="Content\Imagess\new_10.jpg" />
+    <Content Include="Content\Imagess\new_2.jpg" />
+    <Content Include="Content\Imagess\new_3.jpg" />
+    <Content Include="Content\Imagess\new_4.jpg" />
+    <Content Include="Content\Imagess\new_5.jpg" />
+    <Content Include="Content\Imagess\new_6.jpg" />
+    <Content Include="Content\Imagess\new_7.jpg" />
+    <Content Include="Content\Imagess\new_8.jpg" />
+    <Content Include="Content\Imagess\new_9.jpg" />
+    <Content Include="Content\Imagess\new_single.png" />
+    <Content Include="Content\Imagess\phone.png" />
+    <Content Include="Content\Imagess\phone_white.png" />
+    <Content Include="Content\Imagess\popular_1.png" />
+    <Content Include="Content\Imagess\popular_2.png" />
+    <Content Include="Content\Imagess\popular_3.png" />
+    <Content Include="Content\Imagess\popular_4.png" />
+    <Content Include="Content\Imagess\popular_5.png" />
+    <Content Include="Content\Imagess\quote.png" />
+    <Content Include="Content\Imagess\review_1.jpg" />
+    <Content Include="Content\Imagess\review_2.jpg" />
+    <Content Include="Content\Imagess\review_3.jpg" />
+    <Content Include="Content\Imagess\search.png" />
+    <Content Include="Content\Imagess\send.png" />
+    <Content Include="Content\Imagess\shopping_cart.jpg" />
+    <Content Include="Content\Imagess\shop_1.jpg" />
+    <Content Include="Content\Imagess\shop_2.jpg" />
+    <Content Include="Content\Imagess\shop_background.jpg" />
+    <Content Include="Content\Imagess\single_1.jpg" />
+    <Content Include="Content\Imagess\single_2.jpg" />
+    <Content Include="Content\Imagess\single_3.jpg" />
+    <Content Include="Content\Imagess\single_4.jpg" />
+    <Content Include="Content\Imagess\trends_1.jpg" />
+    <Content Include="Content\Imagess\trends_2.jpg" />
+    <Content Include="Content\Imagess\trends_3.jpg" />
+    <Content Include="Content\Imagess\trends_background.jpg" />
+    <Content Include="Content\Imagess\user.png" />
+    <Content Include="Content\Imagess\user.svg" />
+    <Content Include="Content\Imagess\view_1.jpg" />
+    <Content Include="Content\Imagess\view_2.jpg" />
+    <Content Include="Content\Imagess\view_3.jpg" />
+    <Content Include="Content\Imagess\view_4.jpg" />
+    <Content Include="Content\Imagess\view_5.jpg" />
+    <Content Include="Content\Imagess\view_6.jpg" />
+    <Content Include="Content\img\about.jpg" />
+    <Content Include="Content\img\banner3.jpg" />
+    <Content Include="Content\img\bb1.png" />
+    <Content Include="Content\img\bb2.png" />
+    <Content Include="Content\img\bg1.png" />
+    <Content Include="Content\img\bg2.jpg" />
+    <Content Include="Content\img\d1.jpg" />
+    <Content Include="Content\img\d2.jpg" />
+    <Content Include="Content\img\d3.jpg" />
+    <Content Include="Content\img\d4.jpg" />
+    <Content Include="Content\img\d5.jpg" />
+    <Content Include="Content\img\d6.jpg" />
+    <Content Include="Content\img\e1.jpg" />
+    <Content Include="Content\img\e2.jpg" />
+    <Content Include="Content\img\f.png" />
+    <Content Include="Content\img\g3.jpg" />
+    <Content Include="Content\img\m.png" />
+    <Content Include="Content\img\t1.jpg" />
+    <Content Include="Content\img\t2.jpg" />
+    <Content Include="Content\img\t3.jpg" />
+    <Content Include="Content\uploads\1.png" />
+    <Content Include="Content\uploads\2.png" />
+    <Content Include="Content\uploads\3.jpg" />
+    <Content Include="Content\uploads\4.png" />
+    <Content Include="Content\uploads\5.jpg" />
+    <Content Include="Content\uploads\5.png" />
+    <Content Include="Content\uploads\6.jpg" />
+    <Content Include="Content\uploads\7.png" />
+    <Content Include="Content\uploads\8.png" />
+    <Content Include="Content\upload\41Hg7lSuK-L._SX38_SY50_CR,0,0,38,50_ - Copy - Copy.jpg" />
+    <Content Include="Content\upload\41Hg7lSuK-L._SX38_SY50_CR,0,0,38,50_ - Copy.jpg" />
+    <Content Include="Content\upload\41Hg7lSuK-L._SX38_SY50_CR,0,0,38,50_.jpg" />
+    <Content Include="Content\upload\about.jpg" />
+    <Content Include="Content\upload\add to cart - Copy - Copy.png" />
+    <Content Include="Content\upload\add to cart - Copy.png" />
+    <Content Include="Content\upload\add to cart.png" />
+    <Content Include="Content\upload\add-to-cart - Copy %282%29.gif" />
+    <Content Include="Content\upload\add-to-cart - Copy - Copy.gif" />
+    <Content Include="Content\upload\add-to-cart - Copy.gif" />
+    <Content Include="Content\upload\add-to-cart.gif" />
+    <Content Include="Content\upload\add.jpg" />
+    <Content Include="Content\upload\bag - Copy - Copy %282%29.jpg" />
+    <Content Include="Content\upload\bag - Copy - Copy.jpg" />
+    <Content Include="Content\upload\bag - Copy.jpg" />
+    <Content Include="Content\upload\bag.jpg" />
+    <Content Include="Content\upload\best.jpg" />
+    <Content Include="Content\upload\bg2.jpg" />
+    <Content Include="Content\upload\big.png" />
+    <Content Include="Content\upload\BIZON1 %281%29.jpg" />
+    <Content Include="Content\upload\BIZON1 %282%29.jpg" />
+    <Content Include="Content\upload\BIZON1 %283%29.jpg" />
+    <Content Include="Content\upload\book - Copy %282%29.jpg" />
+    <Content Include="Content\upload\book - Copy %283%29.jpg" />
+    <Content Include="Content\upload\book - Copy - Copy.jpg" />
+    <Content Include="Content\upload\book - Copy.jpg" />
+    <Content Include="Content\upload\book.jpg" />
+    <Content Include="Content\upload\book1 - Copy.jpg" />
+    <Content Include="Content\upload\book1.jpg" />
+    <Content Include="Content\upload\bra giels1 - Copy.jpg" />
+    <Content Include="Content\upload\bra giels1.jpg" />
+    <Content Include="Content\upload\bra girls - Copy.jpg" />
+    <Content Include="Content\upload\bra girls.jpg" />
+    <Content Include="Content\upload\clean plus - Copy.jpg" />
+    <Content Include="Content\upload\clean plus.jpg" />
+    <Content Include="Content\upload\coker - Copy.jpg" />
+    <Content Include="Content\upload\coker.jpg" />
+    <Content Include="Content\upload\culor - Copy.jpg" />
+    <Content Include="Content\upload\culor.jpg" />
+    <Content Include="Content\upload\g3.jpg" />
+    <Content Include="Content\upload\gogels - Copy.jpg" />
+    <Content Include="Content\upload\gogels.jpg" />
+    <Content Include="Content\upload\kerry fisher - Copy.jpg" />
+    <Content Include="Content\upload\kerry fisher.jpg" />
+    <Content Include="Content\upload\laptop - Copy.jpg" />
+    <Content Include="Content\upload\laptop.jpg" />
+    <Content Include="Content\upload\logo.png" />
+    <Content Include="Content\upload\love1.jpg" />
+    <Content Include="Content\upload\love10.jpg" />
+    <Content Include="Content\upload\love11.jpg" />
+    <Content Include="Content\upload\love12.jpg" />
+    <Content Include="Content\upload\love13.jpg" />
+    <Content Include="Content\upload\love2.jpg" />
+    <Content Include="Content\upload\love3.jpg" />
+    <Content Include="Content\upload\love4.jpg" />
+    <Content Include="Content\upload\love5.jpg" />
+    <Content Include="Content\upload\love6.jpg" />
+    <Content Include="Content\upload\love7.jpg" />
+    <Content Include="Content\upload\love8.jpg" />
+    <Content Include="Content\upload\love9.jpg" />
+    <Content Include="Content\upload\mall.jpg" />
+    <Content Include="Content\upload\Market.jpg" />
+    <Content Include="Content\upload\mobile nokia.jpg" />
+    <Content Include="Content\upload\moto mobile.jpg" />
+    <Content Include="Content\upload\p1.jpg" />
+    <Content Include="Content\upload\p2.jpg" />
+    <Content Include="Content\upload\p3.jpg" />
+    <Content Include="Content\upload\p4.jpg" />
+    <Content Include="Content\upload\shooping.jpg" />
+    <Content Include="Content\upload\shose.jpg" />
+    <Content Include="Content\upload\sound.jpg" />
+    <Content Include="Content\upload\t1.jpg" />
+    <Content Include="Content\upload\t2.jpg" />
+    <Content Include="Content\upload\t3.jpg" />
+    <Content Include="Content\upload\te1.jpg" />
+    <Content Include="Content\upload\te2.jpg" />
+    <Content Include="Content\upload\te3.jpg" />
+    <Content Include="Content\upload\te4.jpg" />
+    <Content Include="Content\upload\te5.jpg" />
+    <Content Include="Content\upload\te6.jpg" />
+    <Content Include="Content\img\150_sleep1_600.gif" />
+    <Content Include="Content\img\building2.jpg" />
+    <Content Include="Content\upload\building6.jpg" />
+    <Content Include="Content\img\LOB_val_600.gif" />
+    <Content Include="Content\img\Modern-e-Commerce-Web-Design-Trends.-Part-2.gif" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\paginition.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\minified\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.accordion.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.button.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.core.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.dialog.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.resizable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.selectable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Content\upload\10945175504-zs-home_appliances_111-ab.jpg" />
+    <Content Include="Content\upload\1183167686201708091305-11472-Job-Opportunity-05.jpg" />
+    <Content Include="Content\upload\1298096855504481783-k6ZD--621x414%40LiveMint.jpg" />
+    <Content Include="Content\upload\1314136553Shirts_Wholesale-1.jpg" />
+    <Content Include="Content\upload\1378569238shoppingtools-buildandprice-Rio-SnowWhitePearl-RO_46J.jpg" />
+    <Content Include="Content\upload\182975300THUMBNAIL_Fotolia_124863579_Subscription_Monthly_M.jpg" />
+    <Content Include="Content\upload\369272983FNZ1553-AW18-Landing-Furniture-DT-Hor-Banner-880x395-Fabric-Sofa.jpg" />
+    <Content Include="Content\upload\47474012Pets-Animals-720x500.jpg" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\fonts\FontAwesome.otf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\upload\love1 - Shortcut.lnk" />
+    <Content Include="Content\upload\love2 - Shortcut.lnk" />
+    <Content Include="Content\upload\love3 - Shortcut.lnk" />
+    <Content Include="Content\upload\love4 - Shortcut.lnk" />
+    <Content Include="Content\upload\love5 - Shortcut.lnk" />
+    <Content Include="Content\upload\love6 - Shortcut.lnk" />
+    <Content Include="Content\upload\love7 - Shortcut.lnk" />
+    <EntityDeploy Include="Models\MyModelComp.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MyModelComp.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\MyModelComp.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MyModelComp.edmx</DependentUpon>
+      <LastGenOutput>MyModelComp.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\MyModelComp.edmx.diagram">
+      <DependentUpon>MyModelComp.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\MyModelComp.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MyModelComp.edmx</DependentUpon>
+      <LastGenOutput>MyModelComp.cs</LastGenOutput>
+    </Content>
+    <EntityDeploy Include="Models\purchaseModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>purchaseModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\purchaseModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>purchaseModel.edmx</DependentUpon>
+      <LastGenOutput>purchaseModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\purchaseModel.edmx.diagram">
+      <DependentUpon>purchaseModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\purchaseModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>purchaseModel.edmx</DependentUpon>
+      <LastGenOutput>purchaseModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Content\fott\plugins\fontawesome-free-5.0.1\webfonts\fa-brands-400.eot" />
+    <Content Include="Content\fott\plugins\fontawesome-free-5.0.1\webfonts\fa-brands-400.ttf" />
+    <Content Include="Content\fott\plugins\fontawesome-free-5.0.1\webfonts\fa-brands-400.woff" />
+    <Content Include="Content\fott\plugins\fontawesome-free-5.0.1\webfonts\fa-brands-400.woff2" />
+    <Content Include="Content\fott\plugins\fontawesome-free-5.0.1\webfonts\fa-regular-400.eot" />
+    <Content Include="Content\fott\plugins\fontawesome-free-5.0.1\webfonts\fa-regular-400.ttf" />
+    <Content Include="Content\fott\plugins\fontawesome-free-5.0.1\webfonts\fa-regular-400.woff" />
+    <Content Include="Content\fott\plugins\fontawesome-free-5.0.1\webfonts\fa-regular-400.woff2" />
+    <Content Include="Content\fott\plugins\fontawesome-free-5.0.1\webfonts\fa-solid-900.eot" />
+    <Content Include="Content\fott\plugins\fontawesome-free-5.0.1\webfonts\fa-solid-900.ttf" />
+    <Content Include="Content\fott\plugins\fontawesome-free-5.0.1\webfonts\fa-solid-900.woff" />
+    <Content Include="Content\fott\plugins\fontawesome-free-5.0.1\webfonts\fa-solid-900.woff2" />
+    <Content Include="Content\fott\plugins\slick-1.8.0\fonts\slick.eot" />
+    <Content Include="Content\fott\plugins\slick-1.8.0\fonts\slick.ttf" />
+    <Content Include="Content\fott\plugins\slick-1.8.0\fonts\slick.woff" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Content\css\bootstrap-grid.css.map" />
+    <Content Include="Content\css\bootstrap-grid.min.css.map" />
+    <Content Include="Content\css\bootstrap-reboot.css.map" />
+    <Content Include="Content\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\css\bootstrap.css.map" />
+    <Content Include="Content\css\bootstrap.min.css.map" />
+    <None Include="Scripts\jquery-1.7.1.intellisense.js" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery-1.7.1.js" />
+    <Content Include="Scripts\jquery-1.7.1.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.8.20.js" />
+    <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\js\bootstrap.bundle.js" />
+    <Content Include="Scripts\js\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\js\bootstrap.js" />
+    <Content Include="Scripts\js\bootstrap.min.js" />
+    <Content Include="Scripts\knockout-2.1.0.debug.js" />
+    <Content Include="Scripts\knockout-2.1.0.js" />
+    <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Images\accent.png" />
+    <Content Include="Images\bullet.png" />
+    <Content Include="Images\heroAccent.png" />
+    <Content Include="Images\orderedList0.png" />
+    <Content Include="Images\orderedList1.png" />
+    <Content Include="Images\orderedList2.png" />
+    <Content Include="Images\orderedList3.png" />
+    <Content Include="Images\orderedList4.png" />
+    <Content Include="Images\orderedList5.png" />
+    <Content Include="Images\orderedList6.png" />
+    <Content Include="Images\orderedList7.png" />
+    <Content Include="Images\orderedList8.png" />
+    <Content Include="Images\orderedList9.png" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Home\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\Admin\login.cshtml" />
+    <Content Include="Views\Admin\Create.cshtml" />
+    <Content Include="Views\Admin\ViewCategory.cshtml" />
+    <Content Include="Views\User\SignUp.cshtml" />
+    <Content Include="Views\User\login.cshtml" />
+    <Content Include="Views\Shared\_Layout1.cshtml" />
+    <Content Include="Views\User\CreateAd.cshtml" />
+    <Content Include="Views\User\Ads.cshtml" />
+    <Content Include="Views\User\ViewAd.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\User\DeleteAd.cshtml" />
+    <Content Include="Views\Home\Adtocart.cshtml" />
+    <Content Include="Views\Home\checkout.cshtml" />
+    <Content Include="Views\Purchase\Details.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Registration.cshtml" />
+    <Content Include="Views\Home\login.cshtml" />
+    <Content Include="Views\Shared\_Layout2.cshtml" />
+    <Content Include="Views\Admin\Delete.cshtml" />
+    <Content Include="Scripts\js\bootstrap.bundle.js.map" />
+    <Content Include="Scripts\js\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\js\bootstrap.js.map" />
+    <Content Include="Scripts\js\bootstrap.min.js.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Content\images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>1889</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

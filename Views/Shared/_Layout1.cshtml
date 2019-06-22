@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+
+            ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+   display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+
+
+li :hover {
+  background-color: pink;
+}
+.na
+{
+text-decoration:none;
+color:white;
+
+ }
+        </style>
+        <title>@Page.Title</title>
+        @RenderSection("head", required: false)
+
+        <link href="~/Content/paginition.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse" style="">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Deepak Rajpoot</a>
+                </div>
+                <ul >
+                    <li >@Html.ActionLink("Category", "Index", "User", null, new { @class = "ht" })</li>
+                       <li >@Html.ActionLink("About", "About", "Home", null, new { @class = "ht" })</li>
+                       <li >@Html.ActionLink("Admin", "login", "Admin", null, new { @class = "ht" })</li>
+                    <li>
+                        @if (Session["u_id"] != null)
+                        {
+                            @Html.ActionLink("Post An Ad", "CreateAd", "User", null, new { @class = "ht" })
+
+                        }
+                    </li>
+                </ul>
+                <ul >
+                    <li>
+                        @if (Session["u_id"] == null)
+                        {
+
+                            @Html.ActionLink("Sign In", "login", "User", null, new { @class = "ht", })
+
+                        }
+                    </li>
+                    <li>
+                        @if (Session["u_id"] == null)
+                        {
+                            @Html.ActionLink("Sign Up", "SignUp", "User", null, new { @class = "ht" })
+                        }
+
+                    <li>
+</ul>
+            </div>
+        </nav>
+
+                @RenderBody()
+        <script src="~/Scripts/bootstrap.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>
+    </body>
+</html>

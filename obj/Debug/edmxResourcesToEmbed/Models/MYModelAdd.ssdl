@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AddtocartModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="AddtocartModelStoreContainer">
+    <EntitySet Name="tbl_invoice" EntityType="AddtocartModel.Store.tbl_invoice" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tbl_order" EntityType="AddtocartModel.Store.tbl_order" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tbl_product" EntityType="AddtocartModel.Store.tbl_product" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tbl_user" EntityType="AddtocartModel.Store.tbl_user" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK__tbl_invoi__in_fk__0EA330E9" Association="AddtocartModel.Store.FK__tbl_invoi__in_fk__0EA330E9">
+      <End Role="tbl_user" EntitySet="tbl_user" />
+      <End Role="tbl_invoice" EntitySet="tbl_invoice" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_order__o_fk___1367E606" Association="AddtocartModel.Store.FK__tbl_order__o_fk___1367E606">
+      <End Role="tbl_product" EntitySet="tbl_product" />
+      <End Role="tbl_order" EntitySet="tbl_order" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_order__o_fk___145C0A3F" Association="AddtocartModel.Store.FK__tbl_order__o_fk___145C0A3F">
+      <End Role="tbl_invoice" EntitySet="tbl_invoice" />
+      <End Role="tbl_order" EntitySet="tbl_order" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="tbl_invoice">
+    <Key>
+      <PropertyRef Name="in_id" />
+    </Key>
+    <Property Name="in_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="in_date" Type="datetime" />
+    <Property Name="in_totalbill" Type="float" />
+    <Property Name="in_fk_user" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_order">
+    <Key>
+      <PropertyRef Name="o_id" />
+    </Key>
+    <Property Name="o_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="o_date" Type="datetime" />
+    <Property Name="o_qty" Type="int" />
+    <Property Name="o_bill" Type="float" />
+    <Property Name="o_unitprice" Type="int" />
+    <Property Name="o_fk_pro" Type="int" />
+    <Property Name="o_fk_invoice" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_product">
+    <Key>
+      <PropertyRef Name="pro_id" />
+    </Key>
+    <Property Name="pro_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="pro_Name" Type="varchar" MaxLength="50" />
+    <Property Name="pro_price" Type="float" />
+    <Property Name="pro_desc" Type="varchar" MaxLength="50" />
+    <Property Name="pro_image" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tbl_user">
+    <Key>
+      <PropertyRef Name="U_id" />
+    </Key>
+    <Property Name="U_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="U_Name" Type="varchar" MaxLength="50" />
+    <Property Name="U_Contact" Type="varchar" MaxLength="50" />
+    <Property Name="U_paswword" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK__tbl_invoi__in_fk__0EA330E9">
+    <End Role="tbl_user" Type="AddtocartModel.Store.tbl_user" Multiplicity="0..1" />
+    <End Role="tbl_invoice" Type="AddtocartModel.Store.tbl_invoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_user">
+        <PropertyRef Name="U_id" />
+      </Principal>
+      <Dependent Role="tbl_invoice">
+        <PropertyRef Name="in_fk_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_order__o_fk___1367E606">
+    <End Role="tbl_product" Type="AddtocartModel.Store.tbl_product" Multiplicity="0..1" />
+    <End Role="tbl_order" Type="AddtocartModel.Store.tbl_order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_product">
+        <PropertyRef Name="pro_id" />
+      </Principal>
+      <Dependent Role="tbl_order">
+        <PropertyRef Name="o_fk_pro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_order__o_fk___145C0A3F">
+    <End Role="tbl_invoice" Type="AddtocartModel.Store.tbl_invoice" Multiplicity="0..1" />
+    <End Role="tbl_order" Type="AddtocartModel.Store.tbl_order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_invoice">
+        <PropertyRef Name="in_id" />
+      </Principal>
+      <Dependent Role="tbl_order">
+        <PropertyRef Name="o_fk_invoice" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

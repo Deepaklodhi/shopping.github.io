@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AddtocartModelStoreContainer" CdmEntityContainer="AddtocartEntities">
+    <EntitySetMapping Name="tbl_invoice">
+      <EntityTypeMapping TypeName="AddtocartModel.tbl_invoice">
+        <MappingFragment StoreEntitySet="tbl_invoice">
+          <ScalarProperty Name="in_id" ColumnName="in_id" />
+          <ScalarProperty Name="in_date" ColumnName="in_date" />
+          <ScalarProperty Name="in_totalbill" ColumnName="in_totalbill" />
+          <ScalarProperty Name="in_fk_user" ColumnName="in_fk_user" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_order">
+      <EntityTypeMapping TypeName="AddtocartModel.tbl_order">
+        <MappingFragment StoreEntitySet="tbl_order">
+          <ScalarProperty Name="o_id" ColumnName="o_id" />
+          <ScalarProperty Name="o_date" ColumnName="o_date" />
+          <ScalarProperty Name="o_qty" ColumnName="o_qty" />
+          <ScalarProperty Name="o_bill" ColumnName="o_bill" />
+          <ScalarProperty Name="o_unitprice" ColumnName="o_unitprice" />
+          <ScalarProperty Name="o_fk_pro" ColumnName="o_fk_pro" />
+          <ScalarProperty Name="o_fk_invoice" ColumnName="o_fk_invoice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_product">
+      <EntityTypeMapping TypeName="AddtocartModel.tbl_product">
+        <MappingFragment StoreEntitySet="tbl_product">
+          <ScalarProperty Name="pro_id" ColumnName="pro_id" />
+          <ScalarProperty Name="pro_Name" ColumnName="pro_Name" />
+          <ScalarProperty Name="pro_price" ColumnName="pro_price" />
+          <ScalarProperty Name="pro_desc" ColumnName="pro_desc" />
+          <ScalarProperty Name="pro_image" ColumnName="pro_image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_user">
+      <EntityTypeMapping TypeName="AddtocartModel.tbl_user">
+        <MappingFragment StoreEntitySet="tbl_user">
+          <ScalarProperty Name="U_id" ColumnName="U_id" />
+          <ScalarProperty Name="U_Name" ColumnName="U_Name" />
+          <ScalarProperty Name="U_Contact" ColumnName="U_Contact" />
+          <ScalarProperty Name="U_paswword" ColumnName="U_paswword" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
